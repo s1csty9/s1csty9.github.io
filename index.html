@@ -15,23 +15,29 @@
         opacity: 0;
       }
     }
+    #image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 25%;
+      height: auto;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
   </style>
-  <head>
-    <link rel="preload" href="https://s1csty9.github.io/" as="document" />
-  </head>
+  <head></head>
   <body>
     <div id="content">
       <span id="start"></span><span class="cursor">▮</span>
     </div>
+    <img id="image" src="https://i.ibb.co/k2qDSMT/cooltext434458464810165.png" />
     <script>
       var i = 0;
       var txt = "hello, world";
       var speed = 100;
       var isTypingComplete = false;
-
-      setTimeout(function() {
-        typeWriter();
-      }, 1000);
+      var isEnterPressed = false;
+      var isWebsitePreloaded = false;
 
       function typeWriter() {
         if (i < txt.length) {
@@ -40,16 +46,48 @@
           setTimeout(typeWriter, speed);
         } else {
           isTypingComplete = true;
+          preloadWebsite();
         }
       }
 
-      function loadNewPage(event) {
-        if (isTypingComplete && event.keyCode === 13) {
-          window.location.href = "https://s1csty9.github.io/";
+      function showImage() {
+        if (isEnterPressed && isTypingComplete) {
+          var content = document.getElementById("content");
+          var image = document.getElementById("image");
+          var opacity = 0;
+          var fadeInInterval = setInterval(function() {
+            if (opacity >= 1) {
+              clearInterval(fadeInInterval);
+              content.style.display = "none";
+            } else {
+              opacity += 0.1;
+              image.style.opacity = opacity;
+            }
+          }, 50);
         }
       }
 
-      document.addEventListener("keydown", loadNewPage);
+      function handleKeyPress(event) {
+        if (event.keyCode === 13) {
+          isEnterPressed = true;
+          showImage();
+          document.removeEventListener("keydown", handleKeyPress);
+        }
+      }
+
+      function preloadWebsite() {
+        if (!isWebsitePreloaded) {
+          var link = document.createElement("link");
+          link.rel = "preload";
+          link.href = "https://s1csty9.github.io/";
+          link.as = "document";
+          document.head.appendChild(link);
+          isWebsitePreloaded = true;
+        }
+      }
+
+      setTimeout(typeWriter, 1000);
+      document.addEventListener("keydown", handleKeyPress);
     </script>
   </body>
 </html>
