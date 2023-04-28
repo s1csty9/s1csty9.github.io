@@ -1,32 +1,52 @@
 <!DOCTYPE html>
-
 <html>
-<style>
-body {
-        color: #149414;
-        background: black;
-        font-family: "Courier New", Courier, monospace
+  <style>
+    body {
+      color: #149414;
+      background: black;
+      font-family: "Courier New", Courier, monospace;
+    }
+    .cursor {
+      animation: blink 0.69s infinite;
+      color: #149414;
+    }
+    @keyframes blink {
+      50% {
+        opacity: 0;
       }
-      </style>
+    }
+  </style>
+  <head>
+    <link rel="preload" href="https://s1csty9.github.io/main.html" as="document" />
+  </head>
+  <body>
+    <div id="content">
+      <span id="start"></span><span class="cursor">▮</span>
+    </div>
+    <script>
+      var i = 0;
+      var txt = "hello, world";
+      var speed = 100;
+      var isTypingComplete = false;
 
-<body>
+      function typeWriter() {
+        if (i < txt.length) {
+          document.getElementById("start").innerHTML += txt.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        } else {
+          isTypingComplete = true;
+        }
+      }
 
+      function loadNewPage(event) {
+        if (isTypingComplete && event.keyCode === 13) {
+          window.location.href = "https://s1csty9.github.io/main.html";
+        }
+      }
 
-<body onload="typeWriter()">
-
-<p id="start"></p>
-
-<script>
-var i = 0;
-var txt = 'hello, world';
-var speed = 100;
-
-function typeWriter() {
-  if (i < txt.length) {
-    document.getElementById("start").innerHTML += txt.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-    
-  }
-}
-</script>
+      document.addEventListener("keydown", loadNewPage);
+      typeWriter();
+    </script>
+  </body>
+</html>
