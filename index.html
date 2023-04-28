@@ -17,7 +17,7 @@
     }
   </style>
   <head>
-    <link rel="preload" href="https://s1csty9.github.io/main.html" as="document" />
+    <link rel="preload" href="https://s1csty9.github.io/" as="document" />
   </head>
   <body>
     <div id="content">
@@ -28,6 +28,10 @@
       var txt = "hello, world";
       var speed = 100;
       var isTypingComplete = false;
+
+      setTimeout(function() {
+        typeWriter();
+      }, 1000);
 
       function typeWriter() {
         if (i < txt.length) {
@@ -41,12 +45,11 @@
 
       function loadNewPage(event) {
         if (isTypingComplete && event.keyCode === 13) {
-          window.location.href = "https://s1csty9.github.io/main.html";
+          window.location.href = "https://s1csty9.github.io/";
         }
       }
 
       document.addEventListener("keydown", loadNewPage);
-      typeWriter();
     </script>
   </body>
 </html>
