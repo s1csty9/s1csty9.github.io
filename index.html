@@ -3,6 +3,7 @@
   <style>
     body {
       color: #149414;
+      background-color: black;
       background-image: url('https://raw.githubusercontent.com/s1csty9/s1csty9.github.io/main/img/Pure_black_wallpaper.jpg');
       font-family: "Courier New", Courier, monospace;
     }
@@ -55,23 +56,32 @@
           var content = document.getElementById("content");
           var image = document.getElementById("image");
           var opacity = 0;
-          var fadeInInterval = setInterval(function() {
-            if (opacity >= 1) {
-              clearInterval(fadeInInterval);
-              content.style.display = "none";
-            } else {
-              opacity += 0.1;
-              image.style.opacity = opacity;
-            }
-          }, 50);
+          setTimeout(function() {
+            var fadeInInterval = setInterval(function() {
+              if (opacity >= 1) {
+                clearInterval(fadeInInterval);
+                content.style.display = "none";
+              } else {
+                opacity += 0.1;
+                image.style.opacity = opacity;
+              }
+            }, 50);
+          }, 300);
         }
       }
 
       function handleKeyPress(event) {
         if (event.keyCode === 13) {
           isEnterPressed = true;
+          var content = document.getElementById("content");
+          content.innerHTML = "";
+          txt = "Welcome to the website of";
+          i = 0;
+          isTypingComplete = false;
+          typeWriter();
           showImage();
           document.removeEventListener("keydown", handleKeyPress);
+          content.style.display = "none";
         }
       }
 
