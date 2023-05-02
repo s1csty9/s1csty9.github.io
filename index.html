@@ -73,15 +73,9 @@
       function handleKeyPress(event) {
         if (event.keyCode === 13) {
           isEnterPressed = true;
-          var content = document.getElementById("content");
-          content.innerHTML = "";
-          txt = "Welcome to the website of";
-          i = 0;
-          isTypingComplete = false;
-          typeWriter();
           showImage();
           document.removeEventListener("keydown", handleKeyPress);
-          content.style.display = "none";
+          document.getElementById("content").style.display = "none";
         }
       }
 
