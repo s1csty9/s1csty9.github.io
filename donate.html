@@ -2,18 +2,23 @@
 <html>
 <style>body {
     font-family: 'Cambria', monospace;
+
+}
+
+::selection {
+  background: rgb(50,50,50);
 }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <body style="background-color:black; color:lime;">
 <h1><center>s1csty9's donations</center></h1>
-<center>Bitcoin<br><input type="text" class="copyBTC" value="bc1qnq08yg5a67w8ev48g8dedpqhv93s90ecsfpsge" readonly>
-  <button type="button" class="copy-link-button" onclick="copyBTC()">
-    <span class="material-icons"><i class="fa fa-copy"></i></span>
+<center>Bitcoin<br><input type="text" class="copyBTC" value="bc1qnq08yg5a67w8ev48g8dedpqhv93s90ecsfpsge" readonly style="background-color:black;color:lime" >
+  <button type="button" class="copy-link-button" onclick="copyBTC()" style="background-color:black">
+    <span class="material-icons"><i class="fa fa-copy" style="color:lime"></i></span>
   </button></center>
-  <center>Ethereum<br><input type="text" class="copyETH" value="0xD4E3162c4B1C8D0Cf31F9DC1DA9cD06715E58a7C" readonly>
-  <button type="button" class="copy-link-button" onclick="copyETH()">
-    <span class="material-icons"><i class="fa fa-copy"></i></span>
+  <center>Ethereum<br><input type="text" class="copyETH" value="0xD4E3162c4B1C8D0Cf31F9DC1DA9cD06715E58a7C" readonly style="background-color:black;color:lime">
+  <button type="button" class="copy-link-button" onclick="copyETH()" style="background-color:black">
+    <span class="material-icons"><i class="fa fa-copy" style="color:lime"></i></span>
   </button></center>
 
 </body>
@@ -29,4 +34,6 @@
       copyText.select();
       document.execCommand('copy');
     }
+
+
   </script>
