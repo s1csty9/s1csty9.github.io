@@ -20,6 +20,10 @@
   <button type="button" class="copy-link-button" onclick="copyETH()" style="background-color:black">
     <span class="material-icons"><i class="fa fa-copy" style="color:lime"></i></span>
   </button></center>
+    <center>Solana<br><input type="text" class="copySOL" value="3n4bXJrNB1WS6MozGbCXq553dhS2RhwKUK1SPtMQmFNo" readonly style="background-color:black;color:lime">
+  <button type="button" class="copy-link-button" onclick="copySOL()" style="background-color:black">
+    <span class="material-icons"><i class="fa fa-copy" style="color:lime"></i></span>
+  </button></center>
 
 </body>
 </html>
@@ -34,6 +38,10 @@
       copyText.select();
       document.execCommand('copy');
     }
-
+function copySOL() {
+      var copyText = document.querySelector('.copySOL');
+      copyText.select();
+      document.execCommand('copy');
+    }
 
   </script>
